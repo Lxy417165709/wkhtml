@@ -24,6 +24,8 @@
 
 ## 4.2 示例代码
 
+### 4.2.1 读取网站`html`，形成图片。
+
 运行以下代码，将在运行目录下生成名为`example_out.png`的文件。
 
 ```go
@@ -33,6 +35,23 @@ import "github.com/Lxy417165709/wkhtml"
 
 func main() {
 	_, err := wkhtml.NewImgBuilder(wkhtml.Input("www.baidu.com"), wkhtml.Output("example_out.png")).Exec()
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+### 4.2.2 直接读取`html`，形成图片。
+
+运行以下代码，将在运行目录下生成名为`example_out.png`的文件。
+
+```go
+package main
+
+import "github.com/Lxy417165709/wkhtml"
+
+func main() {
+	_, err := wkhtml.NewImgBuilder(wkhtml.Html("<h1>hello world<h1>"), wkhtml.Output("example_out.png")).Exec()
 	if err != nil {
 		panic(err)
 	}
