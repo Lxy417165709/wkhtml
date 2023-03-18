@@ -58,6 +58,40 @@ func main() {
 }
 ```
 
+### 4.2.2 执行后，读取标准输出、提取图像数据、保存图像文件。
+
+运行以下代码，将在运行目录下生成名为`example_out.png`的文件。
+
+```go
+package main
+
+import (
+	"github.com/Lxy417165709/wkhtml"
+	"os"
+)
+
+func main() {
+	// 1. 执行，获取标准输出。
+	data, err := wkhtml.NewImgBuilder(wkhtml.Html("<h1>hello world<h1>")).Exec()
+	if err != nil {
+		panic(err)
+	}
+
+	// 2. 提取图像数据。
+	pngData := wkhtml.ExtractData(data, &wkhtml.DataExtractorPng{})
+
+	// 3. 写入图像文件。
+	pngFile, err := os.Create("example_out.png")
+	if err != nil {
+		panic(err)
+	}
+	defer pngFile.Close()
+	if _, err := pngFile.Write(pngData); err != nil {
+		panic(err)
+	}
+}
+```
+
 # 5. 常见错误
 
 ## 5.1 执行时报错: `exec: "wkhtmltoimage": executable file not found in %PATH%`
