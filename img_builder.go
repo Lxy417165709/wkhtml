@@ -65,10 +65,6 @@ func (i *imgBuilder) Exec() ([]byte, error) {
 // buildArgs 构建参数。
 func (i *imgBuilder) buildArgs() []string {
 	args := make([]string, 0)
-	if i.format != "" {
-		args = append(args, "--format")
-		args = append(args, i.format)
-	}
 	if i.width != 0 {
 		args = append(args, "--width")
 		args = append(args, fmt.Sprintf("%d", i.width))
@@ -77,6 +73,10 @@ func (i *imgBuilder) buildArgs() []string {
 	if i.height != 0 {
 		args = append(args, "--height")
 		args = append(args, fmt.Sprintf("%d", i.height))
+	}
+	if i.format != "" {
+		args = append(args, "--format")
+		args = append(args, i.format)
 	}
 	if i.quality != 0 {
 		args = append(args, "--quality")
