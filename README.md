@@ -1,14 +1,14 @@
 # 1. 背景
 
-由于工作中用到了 `html 转 图像` 的功能，经过多番搜索，没有找到特别满意的开源库，因此自己手动开发。
+由于工作中需要用到`html 转 图像`功能，经过多番搜索，没有找到特别满意的开源库，因此自己手动开发、并开源共享给大家使用。
 
 # 2. 语言
 
-Go
+`Go`
 
 # 3. 原理
 
-1. 底层: 借助`wkhtmltoimage`工具，实现 `html 转 图像` 的功能。
+1. 底层: 借助`wkhtmltoimage`工具，实现`html 转 图像`的功能。
 2. 顶层: 利用`Go语言`进行封装，暴露易用接口。
 
 # 4. 使用
@@ -41,8 +41,8 @@ func main() {
 
 # 5. 常见错误
 
-## 5.1 `exec: "wkhtmltoimage": executable file not found in %PATH%`
+## 5.1 执行时报错: `exec: "wkhtmltoimage": executable file not found in %PATH%`
 
-原因: 未安装`wkhtmltoimage`工具，或是已安装，但未加入`PATH`环境变量。
+原因: 未安装`wkhtmltoimage`工具，或是已安装，但未将其路径加入`PATH`环境变量。
 
 解决: 参考上文 `步骤4.1`。
