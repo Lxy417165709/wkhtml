@@ -15,7 +15,7 @@ Go
 
 ## 4.1 步骤
 
-1. 安装`wkhtmltoimage`工具，并加入环境变量的`Path`。 ([wkhtmltoimage工具官网](https://wkhtmltopdf.org/))
+1. 安装`wkhtmltoimage`工具，并将其路径加入`PATH`环境变量。 ([wkhtmltoimage工具官网](https://wkhtmltopdf.org/))
 2. 安装本库依赖。
     ```shell
     go get -u github.com/Lxy417165709/wkhtml
@@ -24,7 +24,7 @@ Go
 
 ## 4.2 示例代码
 
-运行以下代码，将在运行目录中生成名为`example_out.png`的文件
+运行以下代码，将在运行目录下生成名为`example_out.png`的文件。
 
 ```go
 package main
@@ -44,4 +44,5 @@ func main() {
 ## 5.1 `exec: "wkhtmltoimage": executable file not found in %PATH%`
 
 原因: 未安装`wkhtmltoimage`工具，或是已安装，但未加入`PATH`环境变量。
+
 解决: 参考上文 `步骤4.1`。
