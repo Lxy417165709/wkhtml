@@ -2,6 +2,7 @@ package wkhtml
 
 import "bytes"
 
+// DataExtractor 数据提取器。
 type DataExtractor interface {
 	Extract(orgData []byte) []byte
 }

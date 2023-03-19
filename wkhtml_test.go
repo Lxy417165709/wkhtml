@@ -42,3 +42,12 @@ func TestExec3(t *testing.T) {
 		return
 	}
 }
+
+func TestLogger(t *testing.T) {
+	SetLogger(NewLoggerStd())
+	_, err := NewImgBuilder(Input("www.baidu.com"), Html("abc"), Output("example_out1.png")).Exec()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+}
