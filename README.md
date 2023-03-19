@@ -92,6 +92,27 @@ func main() {
 }
 ```
 
+### 4.2.4 输出执行过程中的日志。
+
+运行以下代码，将在运行目录下生成名为`example_out.png`的文件。
+
+```go
+package main
+
+import (
+	"github.com/Lxy417165709/wkhtml"
+	"os"
+)
+
+func main() {
+	wkhtml.SetLogger(wkhtml.NewLoggerStd()) // 内置标准日志器，如不符合要求，用户可自定义。
+	_, err := wkhtml.NewImgBuilder(wkhtml.Input("www.baidu.com"), wkhtml.Output("example_out.png")).Exec()
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
 # 5. 常见错误
 
 ## 5.1 执行时报错: `exec: "wkhtmltoimage": executable file not found in %PATH%`
