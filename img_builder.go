@@ -47,6 +47,11 @@ func (i *imgBuilder) Exec() ([]byte, error) {
 	if i.toolPath == "" {
 		return nil, fmt.Errorf("toolPath blank")
 	}
+	if i.input != "-" && i.html != "" {
+		globalLogger.Log(logLevelWarn, "html will be ignore as input not stdin.",
+			Field("input", i.input))
+	}
+	globalLogger.Log(logLevelDebug, "option check finish, start to exec.")
 
 	// 2. 执行。
 	cmd := exec.Command(i.toolPath, i.buildArgs()...)
@@ -55,8 +60,10 @@ func (i *imgBuilder) Exec() ([]byte, error) {
 	}
 	data, err := cmd.CombinedOutput()
 	if err != nil {
+		globalLogger.Log(logLevelError, "CombinedOutput fail.", Field("err", err.Error()))
 		return nil, err
 	}
+	globalLogger.Log(logLevelDebug, "CombinedOutput success.")
 
 	// 3. 返回。
 	return data, nil
